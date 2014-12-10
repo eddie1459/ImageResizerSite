@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show Images</title>
+</head>
+<body>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var ajaxRequest = $.ajax({
+                type: "GET",
+                url: "/api/image/getimages"
+            });
+
+            ajaxRequest.done(function (xhr, textStatus) {
+                for (var i = 0; i < xhr.length; i++) {
+                    $("#imgList").append("http://imageresizersite.cloudapp.net/azure" + xhr[i] + "<br>");
+                }
+            });
+        });
+    </script>
+    <div id="imgList"></div>
+</body>
+</html>
